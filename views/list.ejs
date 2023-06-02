@@ -1,0 +1,45 @@
+
+<%- include("header") -%>
+
+
+<body>
+  <div class="box" id="noteHead">
+    <h1>TODOs</h1>
+  </div>
+  <div class="box" id="heading">
+  
+    <h1><%= listTitle %></h1>
+  </div>
+
+  <div class="box">
+
+    <div class="items_area">
+    <% newListItems.forEach((item)=>{%>
+        <div class="item">
+          <form action="/delete" method="post">
+            <input type="checkbox" name="checkbox" value="<%= item._id %>" onchange="this.form.submit()">
+         
+          </form>
+          
+          
+          <!-- <form action="/update" method="post">
+            <input class=" linethroughItemId" type="checkbox" name="linethroughItemId" value="<%= item._id %>" onchange="this.form.submit()">
+          </form> -->
+          <p>
+            <%= item.name %>
+          </p>
+          <!-- <img src="/public/delete.jpg" alt="s"> -->
+        </div>
+        <% } ) %>
+        
+    </div>
+    
+    <form class="item" action="/" method="post">
+      <input type="text" name="newItem" placeholder="Enter new todo Item" autocomplete="off">
+      <button type="submit" name="list" value=<%= listTitle %> >+</button>
+    </form>
+
+  </div>
+
+   <%- include("footer")  -%> 
+
